@@ -41,7 +41,7 @@ const App = () => {
         filters.availabilityFrom + 'T00:00:00'
       ).valueOf();
       const availabilityTo = new Date(
-        filters.availabilityTo + 'T23:59:59'
+        filters.availabilityTo + 'T00:00:00'
       ).valueOf();
 
       return (
@@ -50,14 +50,18 @@ const App = () => {
       );
     });
 
-    const resetFilters = () => {
-      setFilters(initialFilters)
-    }
+  const resetFilters = () => {
+    setFilters(initialFilters);
+  };
 
   return (
     <div>
-      <Header filters={filters}/>
-      <HeroFilters filters={filters} setFilters={setFilters} resetFilters={resetFilters}/>
+      <Header filters={filters} />
+      <HeroFilters
+        filters={filters}
+        setFilters={setFilters}
+        resetFilters={resetFilters}
+      />
       <HotelsList hotels={filteredHotels} />
     </div>
   );
